@@ -9,21 +9,21 @@ pipeline {
         }
         stage('Setup Python Environment') {
             steps {
-                sh 'python -m venv venv'
-                sh '. venv/bin/activate'
-                sh 'pip install -r requirements.txt'
+                bat 'python -m venv venv'
+                bat '.\\venv\\Scripts\\activate'
+                bat 'pip install -r requirements.txt'
             }
         }
         stage('Run API Test') {
             steps {
-                sh 'python api_test.py'
+                bat 'python api_test.py'
             }
         }
     }
     post {
         always {
             echo 'Cleaning up...'
-            sh 'rm -rf venv'
+            bat 'rd /s /q venv'
         }
     }
 }
