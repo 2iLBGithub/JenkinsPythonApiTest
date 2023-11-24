@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-    // CONSIDER RUNNING VIA A SPECIFIC AGENT?
+    agent {
+        label 'my-first-label'
+    }
 
     stages {
         stage('Checkout') {
